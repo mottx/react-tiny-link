@@ -27,6 +27,7 @@ export const ReactTinyLink: React.FC<IReactTinyLinkProps> = ({
   onSuccess = noop,
   onClick = null,
   requestHeaders = { 'x-requested-with': '' },
+  formatProxyUrl,
 }: IReactTinyLinkProps) => {
   const defaultMedias = defaultMedia ? [defaultMedia] : []
   const [data, loading] = useScraper({
@@ -38,6 +39,7 @@ export const ReactTinyLink: React.FC<IReactTinyLinkProps> = ({
     noCache,
     onError,
     onSuccess,
+    formatProxyUrl,
   })
 
   return (
