@@ -22,6 +22,7 @@ import ScrapTwitter from './Twitter/ScrapTwitter'
 export default async (url: string, httpClient, defaultMedia: string[]) => {
   if (!isEmpty(url)) {
     const response = await httpClient
+    if (!response.ok) throw new Error(`Http ${response.status}`)
     const mimeType = response.headers.get('content-type')
     const data = await response.text()
     const htmlDoc = new DOMParser().parseFromString(data, 'text/html')

@@ -22,10 +22,10 @@ export default async (url, htmlDoc, defaultMedia) => {
     .map(i => fixRelativeUrls(baseUrl, i))
 
   return {
-    title: getTitleOfDoc(htmlDoc),
-    content: getAttrOfDocElement(htmlDoc, "meta[name='description']", 'content'),
+    title:  getAttrOfDocElement(htmlDoc, "meta[property='og:title']", 'content') ?? getTitleOfDoc(htmlDoc),
+    content:  getAttrOfDocElement(htmlDoc, "meta[property='og:description']", 'content') ?? getAttrOfDocElement(htmlDoc, "meta[name='description']", 'content'),
     url: getAttrOfDocElement(htmlDoc, "meta[property='og:url']", 'content'),
-    description: getAttrOfDocElement(htmlDoc, "meta[name='description']", 'content'),
+    description: getAttrOfDocElement(htmlDoc, "meta[property='og:description']", 'content') ?? getAttrOfDocElement(htmlDoc, "meta[name='description']", 'content'),
     video: [],
     image: !defaultMedia
       ? image.filter(i => !isEmpty(i)).map(i => fixRelativeUrls(baseUrl, i))

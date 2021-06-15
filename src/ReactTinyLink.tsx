@@ -28,6 +28,7 @@ export const ReactTinyLink: React.FC<IReactTinyLinkProps> = ({
   onClick = null,
   requestHeaders = { 'x-requested-with': '' },
   formatProxyUrl,
+  placeholderBg = undefined
 }: IReactTinyLinkProps) => {
   const defaultMedias = defaultMedia ? [defaultMedia] : []
   const [data, loading] = useScraper({
@@ -58,7 +59,7 @@ export const ReactTinyLink: React.FC<IReactTinyLinkProps> = ({
           isShownGraphic={showGraphic}
         >
           {showGraphic && (
-            <CardMedia autoPlay={autoPlay} cardSize={cardSize} data={data} loadSecureUrl={loadSecureUrl} />
+            <CardMedia autoPlay={autoPlay} cardSize={cardSize} data={data} loadSecureUrl={loadSecureUrl} placeholderBg={placeholderBg} />
           )}
           <ContentWrapper className="react_tinylink_card_content_wrapper" cardSize={cardSize}>
             <Header maxLine={maxLine} minLine={minLine} className="react_tinylink_card_content_header">

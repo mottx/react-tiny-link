@@ -43,6 +43,7 @@ export interface IReactTinyLinkProps {
   }>
   defaultMedia?: string
   formatProxyUrl?: (url:string) => string
+  placeholderBg?: string
 }
 
 export interface IReactTinyLinkData {

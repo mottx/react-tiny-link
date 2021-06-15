@@ -49,7 +49,7 @@ const VideoWrapper = ({ data, secureVideoUrl, loadSecureUrl, autoPlay }) => {
 }
 
 
-const CardMedia = ({ data, cardSize, autoPlay, loadSecureUrl }) => {
+const CardMedia = ({ data, cardSize, autoPlay, loadSecureUrl, placeholderBg }) => {
   const secureImageUrl = data.image && findFirstSecureUrl(data.image, isValidImageURL)
   const secureVideoUrl = data.video && findFirstSecureUrl(data.video, isValidVideoURL)
 
@@ -60,8 +60,9 @@ const CardMedia = ({ data, cardSize, autoPlay, loadSecureUrl }) => {
           className="react_tinylink_card_media"
           cardSize={cardSize}
           src={data.image && (secureImageUrl ? secureImageUrl : data.image[0])}
+          placeholderBg={placeholderBg}
           type={data.type}
-          style={{ WebkitFilter: 'blur(10px)', filter: 'blur(10px)' }}
+          style={!placeholderBg && { WebkitFilter: 'blur(10px)', filter: 'blur(10px)' } || undefined}
         >
           <ImageWrapper data={data} secureImageUrl={secureImageUrl} loadSecureUrl={loadSecureUrl} />
         </Media>
